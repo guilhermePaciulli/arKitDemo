@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		BD11C72B2044767F0044CB26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C72A2044767F0044CB26 /* AppDelegate.swift */; };
 		BD11C72D2044767F0044CB26 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BD11C72C2044767F0044CB26 /* art.scnassets */; };
-		BD11C72F2044767F0044CB26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C72E2044767F0044CB26 /* ViewController.swift */; };
 		BD11C7322044767F0044CB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD11C7302044767F0044CB26 /* Main.storyboard */; };
 		BD11C7342044767F0044CB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD11C7332044767F0044CB26 /* Assets.xcassets */; };
 		BD11C7372044767F0044CB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD11C7352044767F0044CB26 /* LaunchScreen.storyboard */; };
+		BD11C73F20447EB70044CB26 /* SetPinLocationARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C73E20447EB70044CB26 /* SetPinLocationARViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BD11C7272044767F0044CB26 /* ARKitNanoChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKitNanoChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD11C72A2044767F0044CB26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD11C72C2044767F0044CB26 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		BD11C72E2044767F0044CB26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BD11C7312044767F0044CB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD11C7332044767F0044CB26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD11C7362044767F0044CB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD11C7382044767F0044CB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD11C73E20447EB70044CB26 /* SetPinLocationARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPinLocationARViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,39 @@
 		BD11C7292044767F0044CB26 /* ARKitNanoChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				BD11C72A2044767F0044CB26 /* AppDelegate.swift */,
-				BD11C72C2044767F0044CB26 /* art.scnassets */,
-				BD11C72E2044767F0044CB26 /* ViewController.swift */,
-				BD11C7302044767F0044CB26 /* Main.storyboard */,
-				BD11C7332044767F0044CB26 /* Assets.xcassets */,
-				BD11C7352044767F0044CB26 /* LaunchScreen.storyboard */,
-				BD11C7382044767F0044CB26 /* Info.plist */,
+				BD11C74120447EE60044CB26 /* ViewControllers */,
+				BD11C74020447ED50044CB26 /* Other */,
+				BD11C74220447EF20044CB26 /* Storyboards */,
 			);
 			path = ARKitNanoChallenge;
+			sourceTree = "<group>";
+		};
+		BD11C74020447ED50044CB26 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				BD11C72C2044767F0044CB26 /* art.scnassets */,
+				BD11C7332044767F0044CB26 /* Assets.xcassets */,
+				BD11C7382044767F0044CB26 /* Info.plist */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		BD11C74120447EE60044CB26 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BD11C72A2044767F0044CB26 /* AppDelegate.swift */,
+				BD11C73E20447EB70044CB26 /* SetPinLocationARViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BD11C74220447EF20044CB26 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BD11C7302044767F0044CB26 /* Main.storyboard */,
+				BD11C7352044767F0044CB26 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD11C72F2044767F0044CB26 /* ViewController.swift in Sources */,
+				BD11C73F20447EB70044CB26 /* SetPinLocationARViewController.swift in Sources */,
 				BD11C72B2044767F0044CB26 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,7 +304,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VLLH384AC4;
-				INFOPLIST_FILE = ARKitNanoChallenge/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ARKitNanoChallenge/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.mackmobile.Paciulli.ARKitNanoChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,7 +319,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VLLH384AC4;
-				INFOPLIST_FILE = ARKitNanoChallenge/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ARKitNanoChallenge/Other/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.mackmobile.Paciulli.ARKitNanoChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
