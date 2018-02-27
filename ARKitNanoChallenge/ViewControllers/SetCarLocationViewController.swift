@@ -78,9 +78,9 @@ class SetCarLocationViewController: UIViewController {
     }
     
     func getUserLocation() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
     
     @objc func setPin() {

@@ -30,13 +30,9 @@ class FindCarViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let location = Location.shared.get()
-        let carLocationNode = LocationNode(location: location)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: carLocationNode)
-        let sphere = SCNNode(geometry: SCNSphere(radius: 0.1))
-        sphere.geometry?.materials.first?.diffuse.contents = UIColor.yellow.withAlphaComponent(0.8)
-        sphere.position = carLocationNode.position
-        carLocationNode.addChildNode(sphere)
+        let annotationNode = LocationAnnotationNode(location: Location.shared.get(),
+                                                    image: UIImage(named: "circlePin.png")!)
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
     }
 
 }
