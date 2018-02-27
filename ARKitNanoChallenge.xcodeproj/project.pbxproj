@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4449BE9D8EBFF5DF58437406 /* Pods_ARKitNanoChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FFA14CA712A599C899480D /* Pods_ARKitNanoChallenge.framework */; };
 		BD11C72B2044767F0044CB26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C72A2044767F0044CB26 /* AppDelegate.swift */; };
 		BD11C72D2044767F0044CB26 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = BD11C72C2044767F0044CB26 /* art.scnassets */; };
 		BD11C7322044767F0044CB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD11C7302044767F0044CB26 /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37FFA14CA712A599C899480D /* Pods_ARKitNanoChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKitNanoChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FC7A3BFFA984D8C47B89702 /* Pods-ARKitNanoChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitNanoChallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitNanoChallenge/Pods-ARKitNanoChallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		BB089B93EE849BF0A5B9CD94 /* Pods-ARKitNanoChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitNanoChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARKitNanoChallenge/Pods-ARKitNanoChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		BD11C7272044767F0044CB26 /* ARKitNanoChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKitNanoChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD11C72A2044767F0044CB26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD11C72C2044767F0044CB26 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4449BE9D8EBFF5DF58437406 /* Pods_ARKitNanoChallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D9FA2F1E9D360B8C0F6F855 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5FC7A3BFFA984D8C47B89702 /* Pods-ARKitNanoChallenge.debug.xcconfig */,
+				BB089B93EE849BF0A5B9CD94 /* Pods-ARKitNanoChallenge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A0701C2556656745D02468EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				37FFA14CA712A599C899480D /* Pods_ARKitNanoChallenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BD11C71E2044767F0044CB26 = {
 			isa = PBXGroup;
 			children = (
 				BD11C7292044767F0044CB26 /* ARKitNanoChallenge */,
 				BD11C7282044767F0044CB26 /* Products */,
+				4D9FA2F1E9D360B8C0F6F855 /* Pods */,
+				A0701C2556656745D02468EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,9 +122,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BD11C73B2044767F0044CB26 /* Build configuration list for PBXNativeTarget "ARKitNanoChallenge" */;
 			buildPhases = (
+				C1A1A1EC99D583B995E3AEBF /* [CP] Check Pods Manifest.lock */,
 				BD11C7232044767F0044CB26 /* Sources */,
 				BD11C7242044767F0044CB26 /* Frameworks */,
 				BD11C7252044767F0044CB26 /* Resources */,
+				A93C32FDF360ED491EA68906 /* [CP] Embed Pods Frameworks */,
+				92B5252807BAF4D5D901F797 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,6 +185,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		92B5252807BAF4D5D901F797 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitNanoChallenge/Pods-ARKitNanoChallenge-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A93C32FDF360ED491EA68906 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ARKitNanoChallenge/Pods-ARKitNanoChallenge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARCL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARKitNanoChallenge/Pods-ARKitNanoChallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1A1A1EC99D583B995E3AEBF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARKitNanoChallenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BD11C7232044767F0044CB26 /* Sources */ = {
@@ -300,6 +381,7 @@
 		};
 		BD11C73C2044767F0044CB26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FC7A3BFFA984D8C47B89702 /* Pods-ARKitNanoChallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -315,6 +397,7 @@
 		};
 		BD11C73D2044767F0044CB26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB089B93EE849BF0A5B9CD94 /* Pods-ARKitNanoChallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
