@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="1302" y="498"/>
         </scene>
-        <!--View Controller-->
+        <!--Find Car View Controller-->
         <scene sceneID="Sba-RJ-x5E">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="uAL-p8-hCv" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="uAL-p8-hCv" customClass="FindCarViewController" customModule="ARKitNanoChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j70-rF-YFN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.findCarButton.isEnabled = UserDefaults.standard.value(forKey: "location") != nil
+        self.findCarButton.isEnabled = Location.shared.exists()
     }
 
 }

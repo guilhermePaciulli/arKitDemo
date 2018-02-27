@@ -84,8 +84,7 @@ class SetCarLocationViewController: UIViewController {
     }
     
     @objc func setPin() {
-        let location = locationManager.location!
-        UserDefaults.standard.set(location, forKey: "location")
+        Location.shared.set(location: self.locationManager.location!)
         self.dismiss(animated: true)
     }
     
@@ -113,14 +112,6 @@ class SetCarLocationViewController: UIViewController {
 
 extension SetCarLocationViewController: ARSCNViewDelegate {
     
-    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
-        node.removeFromParentNode()
-        if self.arSceneView.scene.rootNode.childNodes.count == 0 {
-            self.statusLabel.text = "Finding the floor\nMove your phone in order to find the floor"
-            self.completeButton.removeFromSuperview()
-        }
-    }
-    
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let anchor = anchor as? ARPlaneAnchor  else { return }
         
@@ -138,8 +129,10 @@ extension SetCarLocationViewController: ARSCNViewDelegate {
         
         node.addChildNode(planeNode)
         
-        self.statusLabel.text = "Floor found!\nClick inside the plane to place the pin"
-        self.arSceneView.addSubview(self.completeButton)
+        DispatchQueue.main.async {
+            self.statusLabel.text = "Floor found!\nClick inside the plane to place the pin"
+            self.arSceneView.addSubview(self.completeButton)
+        }
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
