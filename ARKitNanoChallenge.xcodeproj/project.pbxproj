@@ -13,7 +13,8 @@
 		BD11C7322044767F0044CB26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD11C7302044767F0044CB26 /* Main.storyboard */; };
 		BD11C7342044767F0044CB26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD11C7332044767F0044CB26 /* Assets.xcassets */; };
 		BD11C7372044767F0044CB26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD11C7352044767F0044CB26 /* LaunchScreen.storyboard */; };
-		BD11C73F20447EB70044CB26 /* SetPinLocationARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD11C73E20447EB70044CB26 /* SetPinLocationARViewController.swift */; };
+		BD950BBA2045C932009E0628 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BB92045C932009E0628 /* MainViewController.swift */; };
+		BD950BBC2045CA68009E0628 /* SetCarLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BBB2045CA68009E0628 /* SetCarLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,8 @@
 		BD11C7332044767F0044CB26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD11C7362044767F0044CB26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD11C7382044767F0044CB26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BD11C73E20447EB70044CB26 /* SetPinLocationARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPinLocationARViewController.swift; sourceTree = "<group>"; };
+		BD950BB92045C932009E0628 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BD950BBB2045CA68009E0628 /* SetCarLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCarLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				BD11C72A2044767F0044CB26 /* AppDelegate.swift */,
-				BD11C73E20447EB70044CB26 /* SetPinLocationARViewController.swift */,
+				BD950BB92045C932009E0628 /* MainViewController.swift */,
+				BD950BBB2045CA68009E0628 /* SetCarLocationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -245,8 +248,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD11C73F20447EB70044CB26 /* SetPinLocationARViewController.swift in Sources */,
 				BD11C72B2044767F0044CB26 /* AppDelegate.swift in Sources */,
+				BD950BBA2045C932009E0628 /* MainViewController.swift in Sources */,
+				BD950BBC2045CA68009E0628 /* SetCarLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
