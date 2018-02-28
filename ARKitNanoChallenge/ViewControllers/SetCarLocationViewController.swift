@@ -23,10 +23,14 @@ class SetCarLocationViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     
+    var latestLocation: CLLocation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.arSceneView.delegate = self
+        self.locationManager.delegate = self
+        
         self.addStatusLabel()
         self.setCompleteButton()
         self.getUserLocation()
@@ -84,8 +88,14 @@ class SetCarLocationViewController: UIViewController {
     }
     
     @objc func setPin() {
-        Location.shared.set(location: self.locationManager.location!)
-        self.dismiss(animated: true)
+        if let currentLocation = self.locationManager.location,
+           let latestLocation = self.latestLocation,
+           let pointOfView = self.arSceneView.pointOfView,
+           let currentNode = self.currentNode {
+            let distance = currentNode.position.distanceTo(r: pointOfView.position).length()
+            Location.shared.set(location: currentLocation.walk(inDirectionOf: latestLocation, theDistanceOf: Double(distance) / 1000))
+            self.dismiss(animated: true)
+        }
     }
     
     @objc func addPinToPlane(withGestureRecognizer recognizer: UIGestureRecognizer) {
@@ -148,6 +158,16 @@ extension SetCarLocationViewController: ARSCNViewDelegate {
         planeNode.simdPosition = float3(Float(anchor.center.x),
                                         Float(anchor.center.y),
                                         Float(anchor.center.z))
+    }
+    
+}
+
+extension SetCarLocationViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let lastLocation = locations.last {
+            self.latestLocation = lastLocation
+        }
     }
     
 }

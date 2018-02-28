@@ -16,7 +16,7 @@
 		BD950BBA2045C932009E0628 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BB92045C932009E0628 /* MainViewController.swift */; };
 		BD950BBC2045CA68009E0628 /* SetCarLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BBB2045CA68009E0628 /* SetCarLocationViewController.swift */; };
 		BD950BBE2045F0FB009E0628 /* FindCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BBD2045F0FB009E0628 /* FindCarViewController.swift */; };
-		BD950BC62045FAD1009E0628 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BC52045FAD1009E0628 /* Location.swift */; };
+		BD950BC62045FAD1009E0628 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BC52045FAD1009E0628 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		BD950BB92045C932009E0628 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BD950BBB2045CA68009E0628 /* SetCarLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCarLocationViewController.swift; sourceTree = "<group>"; };
 		BD950BBD2045F0FB009E0628 /* FindCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCarViewController.swift; sourceTree = "<group>"; };
-		BD950BC52045FAD1009E0628 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		BD950BC52045FAD1009E0628 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 		BD11C74020447ED50044CB26 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				BD950BC52045FAD1009E0628 /* Location.swift */,
+				BD950BC52045FAD1009E0628 /* Helpers.swift */,
 				BD11C72C2044767F0044CB26 /* art.scnassets */,
 				BD11C7332044767F0044CB26 /* Assets.xcassets */,
 				BD11C7382044767F0044CB26 /* Info.plist */,
@@ -256,7 +256,7 @@
 			files = (
 				BD950BBE2045F0FB009E0628 /* FindCarViewController.swift in Sources */,
 				BD11C72B2044767F0044CB26 /* AppDelegate.swift in Sources */,
-				BD950BC62045FAD1009E0628 /* Location.swift in Sources */,
+				BD950BC62045FAD1009E0628 /* Helpers.swift in Sources */,
 				BD950BBA2045C932009E0628 /* MainViewController.swift in Sources */,
 				BD950BBC2045CA68009E0628 /* SetCarLocationViewController.swift in Sources */,
 			);
