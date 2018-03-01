@@ -96,6 +96,7 @@ class SetCarLocationViewController: UIViewController {
             Location.shared.set(location: currentLocation.walk(inDirectionOf: currentHeading.trueHeading.degreesToRadians,
                                                                theDistanceOf: Double(distance / 1000),
                                                                altitudeOf: height))
+            Location.shared.set(location: currentLocation)
             
             self.dismiss(animated: true)
         }
@@ -111,14 +112,18 @@ class SetCarLocationViewController: UIViewController {
                                      transform.columns.3.y,
                                      transform.columns.3.z)
         
-        let sphere = SCNNode(geometry: SCNSphere(radius: 0.1))
-        sphere.geometry?.materials.first?.diffuse.contents = UIColor.yellow.withAlphaComponent(0.8)
-        sphere.position = SCNVector3(translation.x,
-                                     translation.y + 0.1,
-                                     translation.z)
-        currentNode?.removeFromParentNode()
-        currentNode = sphere
-        self.arSceneView.scene.rootNode.addChildNode(sphere)
+        let pin = SCNScene(named: "art.scnassets/pin.dae")!.rootNode.childNode(withName: "pin", recursively: true)!
+        pin.position = SCNVector3(translation.x,
+                                  translation.y,
+                                  translation.z)
+        pin.scale = SCNVector3(pin.scale.x * 0.15,
+                               pin.scale.y * 0.15,
+                               pin.scale.z * 0.15)
+        pin.position.y += 0.5
+        
+        self.currentNode?.removeFromParentNode()
+        self.currentNode = pin
+        self.arSceneView.scene.rootNode.addChildNode(pin)
     }
     
 }

@@ -17,6 +17,7 @@
 		BD950BBC2045CA68009E0628 /* SetCarLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BBB2045CA68009E0628 /* SetCarLocationViewController.swift */; };
 		BD950BBE2045F0FB009E0628 /* FindCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BBD2045F0FB009E0628 /* FindCarViewController.swift */; };
 		BD950BC62045FAD1009E0628 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD950BC52045FAD1009E0628 /* Helpers.swift */; };
+		BDA548C32048729F0016E168 /* LocationSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA548C22048729F0016E168 /* LocationSingleton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		BD950BBB2045CA68009E0628 /* SetCarLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCarLocationViewController.swift; sourceTree = "<group>"; };
 		BD950BBD2045F0FB009E0628 /* FindCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindCarViewController.swift; sourceTree = "<group>"; };
 		BD950BC52045FAD1009E0628 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		BDA548C22048729F0016E168 /* LocationSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSingleton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				BD950BC52045FAD1009E0628 /* Helpers.swift */,
+				BDA548C22048729F0016E168 /* LocationSingleton.swift */,
 				BD11C72C2044767F0044CB26 /* art.scnassets */,
 				BD11C7332044767F0044CB26 /* Assets.xcassets */,
 				BD11C7382044767F0044CB26 /* Info.plist */,
@@ -258,6 +261,7 @@
 				BD11C72B2044767F0044CB26 /* AppDelegate.swift in Sources */,
 				BD950BC62045FAD1009E0628 /* Helpers.swift in Sources */,
 				BD950BBA2045C932009E0628 /* MainViewController.swift in Sources */,
+				BDA548C32048729F0016E168 /* LocationSingleton.swift in Sources */,
 				BD950BBC2045CA68009E0628 /* SetCarLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

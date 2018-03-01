@@ -29,10 +29,14 @@ class FindCarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let annotationNode = LocationAnnotationNode(location: Location.shared.get(),
-                                                    image: UIImage(named: "circlePin.png")!)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        let location = Location.shared.get()
+        let node = LocationNode(location: location)
+        let pin = SCNScene(named: "art.scnassets/pin.dae")!.rootNode.childNode(withName: "pin", recursively: true)!
+        pin.scale = SCNVector3(pin.scale.x * 0.15,
+                               pin.scale.y * 0.15,
+                               pin.scale.z * 0.15)
+        node.addChildNode(pin)
+        self.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: node)
     }
 
 }
