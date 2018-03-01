@@ -23,14 +23,10 @@ class SetCarLocationViewController: UIViewController {
     
     var locationManager = CLLocationManager()
     
-    var latestLocation: CLLocation?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.arSceneView.delegate = self
-        self.locationManager.delegate = self
-        
         self.addStatusLabel()
         self.setCompleteButton()
         self.getUserLocation()
@@ -83,17 +79,24 @@ class SetCarLocationViewController: UIViewController {
     
     func getUserLocation() {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.headingOrientation = .portrait
+        self.locationManager.headingFilter = 0.01
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
+        self.locationManager.startUpdatingHeading()
     }
     
     @objc func setPin() {
         if let currentLocation = self.locationManager.location,
-           let latestLocation = self.latestLocation,
-           let pointOfView = self.arSceneView.pointOfView,
-           let currentNode = self.currentNode {
+           let pointOfView = self.arSceneView.pointOfView, let currentNode = self.currentNode,
+           let currentHeading = self.locationManager.heading {
+            
             let distance = currentNode.position.distanceTo(r: pointOfView.position).length()
-            Location.shared.set(location: currentLocation.walk(inDirectionOf: latestLocation, theDistanceOf: Double(distance) / 1000))
+            let height = currentLocation.altitude - Double(abs(currentNode.position.z - pointOfView.position.z))
+            Location.shared.set(location: currentLocation.walk(inDirectionOf: currentHeading.trueHeading.degreesToRadians,
+                                                               theDistanceOf: Double(distance / 1000),
+                                                               altitudeOf: height))
+            
             self.dismiss(animated: true)
         }
     }
@@ -158,16 +161,6 @@ extension SetCarLocationViewController: ARSCNViewDelegate {
         planeNode.simdPosition = float3(Float(anchor.center.x),
                                         Float(anchor.center.y),
                                         Float(anchor.center.z))
-    }
-    
-}
-
-extension SetCarLocationViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let lastLocation = locations.last {
-            self.latestLocation = lastLocation
-        }
     }
     
 }

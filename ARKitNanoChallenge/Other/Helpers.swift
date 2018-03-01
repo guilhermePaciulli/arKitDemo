@@ -38,50 +38,60 @@ class Location {
         return CLLocation(coordinate: coordinate, altitude: altitude)
     }
     
-    func getBearing(to destination: CLLocation) ->  CGFloat {
-        return self.get().bearingToLocationRadian(destination)
-    }
-    
 }
 
 
 extension CLLocation {
     
-    func bearingToLocationRadian(_ destinationLocation: CLLocation) -> CGFloat {
+    public func bearing(to destination: CLLocation) -> Double {
+        let lat1 = Double.pi * coordinate.latitude / 180.0
+        let long1 = Double.pi * coordinate.longitude / 180.0
+        let lat2 = Double.pi * destination.coordinate.latitude / 180.0
+        let long2 = Double.pi * destination.coordinate.longitude / 180.0
         
-        let lat1 = self.coordinate.latitude.degreesToRadians
-        let lon1 = self.coordinate.longitude.degreesToRadians
+        let rads = atan2(sin(long2 - long1) * cos(lat2),
+                         cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(long2 - long1))
+        let degrees = rads * 180 / Double.pi
         
-        let lat2 = destinationLocation.coordinate.latitude.degreesToRadians
-        let lon2 = destinationLocation.coordinate.longitude.degreesToRadians
-        
-        let dLon = lon2 - lon1
-        
-        let y = sin(dLon) * cos(lat2)
-        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
-        let radiansBearing = atan2(y, x)
-        
-        return CGFloat.init(radiansBearing)
+        return (degrees+360).truncatingRemainder(dividingBy: 360)
     }
     
     func walk(inDirectionOf destination: CLLocation, theDistanceOf xKm: Double) -> CLLocation {
-        let lat1 = self.coordinate.latitude.degreesToRadians
-        let lon1 = self.coordinate.longitude.degreesToRadians
-        let bearing = Double(self.bearingToLocationRadian(destination).radiansToDegrees)
-        let angularDistance = xKm / earthRadius
         
-        //φ2 = asin( sin φ1 ⋅ cos δ + cos φ1 ⋅ sin δ ⋅ cos θ )
-        let latF = sin(sin(lat1) * cos(angularDistance) + cos(lat1) * sin(angularDistance) * cos(bearing))
+        let φ1 = self.coordinate.latitude //φ is latitude
+        let λ1 = self.coordinate.longitude //λ is longitude
+        let θ = self.bearing(to: destination) //θ is the bearing (clockwise from north)
+        let δ = xKm / earthRadius //δ is the angular distance d/R; d being the distance travelled, R the earth’s radius
         
-        //λ2 = λ1 + atan2( sin θ ⋅ sin δ ⋅ cos φ1, cos δ − sin φ1 ⋅ sin φ2 )
-        let longF = lon1 + atan2(sin(bearing) * sin(angularDistance) * cos(lat1),
-                                 cos(angularDistance) - sin(lat1) * sin(latF))
-        //φ is latitude, λ is longitude, θ is the bearing (clockwise from north),
-        //δ is the angular distance d/R; d being the distance travelled, R the earth’s radius
+//      let φ2 = asin(sin φ1  ⋅ cos δ  + cos φ1  ⋅  sin δ  ⋅ cos θ )
+        let φ2 = asin(sin(φ1) * cos(δ) + cos(φ1) * sin(δ) * cos(θ))
+        
+//      let λ2 = λ1 + atan2(sin θ  ⋅ sin δ  ⋅  cos φ1,  cos δ  − sin φ1  ⋅ sin φ2 )
+        let λ2 = λ1 + atan2(sin(θ) * sin(δ) * cos(φ1), cos(δ) - sin(φ1) * sin(φ2))
         
         
-        let finalCoordinates = CLLocationCoordinate2D(latitude: latF, longitude: longF)
-        let finalLocation = CLLocation(coordinate: finalCoordinates, altitude: destination.altitude)
+        let finalCoordinates = CLLocationCoordinate2D(latitude: φ1, longitude: λ2)
+        let finalLocation = CLLocation(coordinate: finalCoordinates, altitude: self.altitude)
+        
+        return finalLocation
+    }
+    
+    func walk(inDirectionOf bearing: Double, theDistanceOf xKm: Double, altitudeOf zMeters: Double? = nil) -> CLLocation {
+        
+        let φ1 = self.coordinate.latitude.degreesToRadians  //φ1 is latitude
+        let λ1 = self.coordinate.longitude.degreesToRadians //λ1 is longitude
+        let θ = bearing                                     //θ is the bearing (clockwise from north)
+        let δ = xKm / earthRadius                           //δ is the angular distance d/R; d being the distance travelled, R the earth’s radius
+        
+//      let φ2 = asin(sin φ1  ⋅ cos δ  + cos φ1  ⋅  sin δ  ⋅ cos θ )
+        let φ2 = asin(sin(φ1) * cos(δ) + cos(φ1) * sin(δ) * cos(θ))
+        
+//      let λ2 = λ1 + atan2(sin θ  ⋅ sin δ  ⋅  cos φ1,  cos δ  − sin φ1  ⋅ sin φ2 )
+        let λ2 = λ1 + atan2(sin(θ) * sin(δ) * cos(φ1), cos(δ) - sin(φ1) * sin(φ2))
+        
+        
+        let finalCoordinates = CLLocationCoordinate2D(latitude: φ2, longitude: λ2)
+        let finalLocation = CLLocation(coordinate: finalCoordinates, altitude: zMeters ?? self.altitude)
         
         return finalLocation
     }
@@ -91,7 +101,7 @@ extension CLLocation {
 extension SCNVector3 {
     
     func length() -> Float {
-        return sqrtf(x * x + y * y + z * z)
+        return sqrtf(x * x + y * y)
     }
     
     func distanceTo(r: SCNVector3) -> SCNVector3 {
