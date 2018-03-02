@@ -29,7 +29,7 @@ class SetCarLocationViewController: UIViewController {
         self.arSceneView.delegate = self
         self.addStatusLabel()
         self.setCompleteButton()
-        self.getUserLocation()
+        self.cofigureLocationManager()
         self.arSceneView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addPinToPlane(withGestureRecognizer:))))
     }
     
@@ -69,6 +69,7 @@ class SetCarLocationViewController: UIViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         configuration.worldAlignment = .gravityAndHeading
+        configuration.isLightEstimationEnabled = true
         self.arSceneView.session.run(configuration)
     }
     
@@ -77,10 +78,10 @@ class SetCarLocationViewController: UIViewController {
         self.arSceneView.session.pause()
     }
     
-    func getUserLocation() {
+    func cofigureLocationManager() {
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.headingOrientation = .portrait
-        self.locationManager.headingFilter = 0.01
+        self.locationManager.headingFilter = 0.001
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.locationManager.startUpdatingHeading()
@@ -88,15 +89,13 @@ class SetCarLocationViewController: UIViewController {
     
     @objc func setPin() {
         if let currentLocation = self.locationManager.location,
-           let pointOfView = self.arSceneView.pointOfView, let currentNode = self.currentNode,
-           let currentHeading = self.locationManager.heading {
+           let pointOfView = self.arSceneView.pointOfView, let currentNode = self.currentNode {
             
             let distance = currentNode.position.distanceTo(r: pointOfView.position).length()
             let height = currentLocation.altitude - Double(abs(currentNode.position.z - pointOfView.position.z))
-            Location.shared.set(location: currentLocation.walk(inDirectionOf: currentHeading.trueHeading.degreesToRadians,
+            Location.shared.set(location: currentLocation.walk(inDirectionOf: currentLocation.course.degreesToRadians,
                                                                theDistanceOf: Double(distance / 1000),
                                                                altitudeOf: height))
-            Location.shared.set(location: currentLocation)
             
             self.dismiss(animated: true)
         }

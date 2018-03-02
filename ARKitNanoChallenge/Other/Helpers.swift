@@ -42,11 +42,9 @@ extension CLLocation {
         let λ2 = λ1 + atan2(sin(θ) * sin(δ) * cos(φ1), cos(δ) - sin(φ1) * sin(φ2))
         
         
-        let finalCoordinates = CLLocationCoordinate2D(latitude: φ2, longitude: λ2)
+        let finalCoordinates = CLLocationCoordinate2D(latitude: φ2.radiansToDegrees, longitude: λ2.radiansToDegrees)
         let finalLocation = CLLocation(coordinate: finalCoordinates, altitude: zMeters ?? self.altitude)
         
-        print(self)
-        print(finalLocation)
         return finalLocation
     }
     
